@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Products Search</title>
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>Products Search</h1>
+  <input type="text" id="searchInput" placeholder="Search products...">
+  <ul id="productList">
+    <li><span>Toys </span><span>$10.00</span></li>
+    <li><span>Fan</span><span>$20.00</span></li>
+    <li><span>Vcr</span><span>$30.00</span></li>
+    <li><span>Remote</span><span>$40.00</span></li>
+    <li><span>Computer</span><span>$50.00</span></li>
+    <li><span>Laptop</span><span>$10.00</span></li>
+    <li><span>Mobile</span><span>$20.00</span></li>
+    <li><span>Cartoon</span><span>$30.00</span></li>
+    <li><span>Bike</span><span>$40.00</span></li>
+    <li><span>Car</span><span>$50.00</span></li>
+  </ul>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const productList = document.getElementById('productList');
+
+    function filterProducts() {
+      const filter = searchInput.value.toLowerCase();
+      const products = productList.getElementsByTagName('li');
+      for (let i = 0; i < products.length; i++) {
+        const product = products[i].getElementsByTagName('span')[0];
+        if (product.textContent.toLowerCase().includes(filter)) {
+          products[i].style.display = '';
+        } else {
+          products[i].style.display = 'none';
+        }
+      }
+    }
+
+    searchInput.addEventListener('input', filterProducts);
+  </script>
+</body>
+</html>
